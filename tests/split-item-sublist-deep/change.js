@@ -16,6 +16,7 @@ export default function(plugin, change) {
         anchorOffset: 0,
         focusKey: selectedNode.key,
         focusOffset: 0,
+        isAtomic: false,
         isBackward: false,
         isFocused: false,
         marks: null,
