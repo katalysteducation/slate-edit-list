@@ -8,13 +8,10 @@ export default function(plugin, change) {
 
     plugin.changes.splitListItem(change);
 
-    // check new selection
-    const selectedNode = change.value.document.getTexts().get(2);
-
     expect(change.value.selection.toJS()).toEqual({
-        anchorKey: selectedNode.key,
+        anchorPath: [0, 0, 1, 1, 0, 0],
         anchorOffset: 0,
-        focusKey: selectedNode.key,
+        focusPath: [0, 0, 1, 1, 0, 0],
         focusOffset: 0,
         isAtomic: false,
         isBackward: false,
