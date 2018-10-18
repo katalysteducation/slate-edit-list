@@ -6,15 +6,8 @@ import readMetadata from 'read-metadata';
 
 import EditList from '../lib';
 
-function deserializeValue(plugin, json) {
-    const SCHEMA = Slate.Schema.create({
-        plugins: [plugin]
-    });
-
-    return Slate.Value.fromJSON(
-        { ...json, schema: SCHEMA },
-        { normalize: false }
-    );
+function deserializeValue(json) {
+    return Slate.Value.fromJSON(json);
 }
 
 describe('slate-edit-list', () => {
@@ -34,15 +27,18 @@ describe('slate-edit-list', () => {
             // eslint-disable-next-line
             const runChange = require(path.resolve(dir, 'change.js')).default;
 
-            const valueInput = deserializeValue(plugin, input);
+            const inputValue = deserializeValue(input);
 
-            const newChange = runChange(plugin, valueInput.change());
+            const editor = new Slate.Editor({
+                value: inputValue,
+                plugins: [plugin]
+            });
+
+            editor.change(change => runChange(plugin, change, editor));
 
             if (expected) {
-                const newDocJSon = newChange.value.toJSON();
-                expect(newDocJSon).toEqual(
-                    deserializeValue(plugin, expected).toJSON()
-                );
+                const newDocJSon = editor.value.toJSON();
+                expect(newDocJSon).toEqual(deserializeValue(expected).toJSON());
             }
         });
     });

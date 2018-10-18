@@ -1,7 +1,9 @@
 import expect from 'expect';
 
-export default function(plugin, change) {
-    const ret = plugin.onKeyDown(
+export default function(plugin, change, editor) {
+    let nextCalled = false;
+
+    plugin.onKeyDown(
         {
             preventDefault: () => {},
             stopPropagation: () => {},
@@ -9,8 +11,10 @@ export default function(plugin, change) {
             shiftKey: true
         },
         change,
-        {}
+        () => {
+            nextCalled = true;
+        }
     );
 
-    expect(ret == null).toBe(true);
+    expect(nextCalled).toBe(true);
 }

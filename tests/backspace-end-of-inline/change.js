@@ -10,7 +10,7 @@ export default function(plugin, change) {
             key: 'Backspace'
         },
         change,
-        {}
+        () => {}
     );
 
     return change;
