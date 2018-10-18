@@ -59,8 +59,10 @@ document:
             - text: 'Third item'
 
 selection:
-  anchorKey: 'start'
-  anchorOffset: 2
-  focusKey: 'end'
-  focusOffset: 4
+  anchor:
+    key: 'start'
+    offset: 2
+  focus:
+    key: 'end'
+    offset: 4
   isFocused: true

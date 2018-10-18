@@ -21,8 +21,10 @@ document:
                             - text: '1st item'
 
 selection:
-  anchorKey: 'start'
-  anchorOffset: 2
-  focusKey: 'start'
-  focusOffset: 4
+  anchor:
+    key: 'start'
+    offset: 2
+  focus:
+    key: 'start'
+    ofset: 4
   isFocused: true

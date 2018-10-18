@@ -4,12 +4,9 @@ export default function(plugin, change) {
     const { value } = change;
     const { selection } = value;
 
-    const range = selection.merge({
-        anchorKey: '_selection_key',
-        anchorOffset: 2,
-        focusKey: '_selection_key',
-        focusOffset: 2
-    });
+    const range = selection
+        .moveAnchorTo('_selection_key', 2)
+        .moveFocusTo('_selection_key', 2);
 
     change
         .select(range)

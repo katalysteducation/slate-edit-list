@@ -26,8 +26,10 @@ document:
             - text: 'Second item'
 
 selection:
-  anchorKey: 'start'
-  anchorOffset: 6
-  focusKey: 'start'
-  focusOffset: 6
+  anchor:
+    key: 'start'
+    offset: 6
+  focus:
+    key: 'start'
+    ofset: 6
   isFocused: true
