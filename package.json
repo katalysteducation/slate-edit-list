@@ -14,15 +14,16 @@
     "*.md"
   ],
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-core": "^6.26.0",
-    "babel-eslint": "^8.0.2",
-    "babel-plugin-transform-flow-strip-types": "^6.22.0",
-    "babel-plugin-transform-runtime": "^6.23.0",
-    "babel-preset-env": "^1.6.1",
-    "babel-preset-flow": "^6.23.0",
-    "babel-preset-react": "^6.24.1",
-    "babel-preset-stage-0": "^6.24.1",
+    "@babel/cli": "^7.0.0",
+    "@babel/core": "^7.0.0",
+    "@babel/plugin-proposal-class-properties": "^7.0.0",
+    "@babel/plugin-transform-flow-strip-types": "^7.0.0",
+    "@babel/plugin-transform-runtime": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "@babel/preset-flow": "^7.0.0",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/register": "^7.0.0",
+    "babel-eslint": "^9.0.0",
     "babelify": "^8.0.0",
     "browserify": "^13.3.0",
     "eslint": "^4.15.0",
@@ -59,7 +60,7 @@
     "serve-example": "http-server ./example/ -p 8081",
     "start": "npm run build-example && npm run serve-example",
     "deploy-example": "npm run build-example && gh-pages -d ./example",
-    "test": "./node_modules/.bin/mocha ./tests/all.js --compilers js:babel-register --reporter=list"
+    "test": "./node_modules/.bin/mocha ./tests/all.js --compilers js:@babel/register --reporter=list"
   },
   "keywords": [
     "slate"

@@ -1,13 +1,17 @@
 {
   "presets": [
-    "env",
-    "flow",
-    "react",
-    "stage-0"
+    "@babel/preset-env",
+    "@babel/preset-flow",
+    "@babel/preset-react"
   ],
   "env": {
     "test": {
-      "plugins": ["transform-runtime"]
+      "plugins": [
+        "@babel/plugin-transform-runtime"
+      ]
     }
-  }
+  },
+  "plugins": [
+    "@babel/plugin-proposal-class-properties",
+  ]
 }
