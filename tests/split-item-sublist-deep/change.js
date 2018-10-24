@@ -6,7 +6,7 @@ export default function(plugin, change) {
 
     change.moveToStartOfNode(selectedBlock).moveForward(2); // It|em 1
 
-    plugin.changes.splitListItem(change);
+    change.splitListItem();
 
     expect(change.value.selection.toJS()).toEqual({
         anchor: {

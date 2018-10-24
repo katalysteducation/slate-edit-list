@@ -4,5 +4,5 @@ export default function(plugin, change) {
 
     change.moveToStartOfNode(selectedBlock).moveForward(2); // It|em 1
 
-    return plugin.changes.splitListItem(change);
+    return change.splitListItem();
 }

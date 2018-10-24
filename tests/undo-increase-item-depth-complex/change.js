@@ -14,7 +14,7 @@ export default function(plugin, change) {
         initialSelection = change.value.selection;
     });
 
-    change.call(plugin.changes.increaseItemDepth).undo();
+    change.increaseItemDepth().undo();
 
     // Back to previous cursor position
     expect(change.value.startBlock.text).toEqual(initialText);

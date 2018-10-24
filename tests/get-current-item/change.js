@@ -6,6 +6,6 @@ export default function(plugin, change) {
 
     change.moveToRangeOfNode(selectedBlock);
 
-    const currentItem = plugin.utils.getCurrentItem(change.value);
+    const currentItem = change.getCurrentItem(change.value);
     expect(currentItem.key).toBe('current_item');
 }

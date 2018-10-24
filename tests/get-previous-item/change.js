@@ -6,6 +6,6 @@ export default function(plugin, change) {
 
     change.moveToRangeOfNode(selectedBlock);
 
-    const previousItem = plugin.utils.getPreviousItem(change.value);
+    const previousItem = change.getPreviousItem(change.value);
     expect(previousItem.key).toBe('previous_item');
 }

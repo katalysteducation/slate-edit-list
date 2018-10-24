@@ -6,5 +6,5 @@ export default function(plugin, change) {
         .moveToStartOfNode(p)
         .moveAnchorTo(5)
         .moveFocusTo(5);
-    return plugin.changes.splitListItem(change);
+    return change.splitListItem();
 }

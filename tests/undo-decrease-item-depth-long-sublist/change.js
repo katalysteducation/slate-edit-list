@@ -9,7 +9,7 @@ export default function(plugin, change) {
         change.moveToRangeOfNode(selectedBlock);
     });
 
-    change.call(plugin.changes.decreaseItemDepth).undo();
+    change.decreaseItemDepth().undo();
 
     // Back to previous cursor position
     expect(change.value.startBlock.text).toEqual('Item 1.1');

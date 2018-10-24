@@ -10,7 +10,7 @@ export default function(plugin, change) {
 
     change
         .select(range)
-        .call(plugin.changes.splitListItem)
+        .splitListItem()
         .undo();
 
     // TODO fix undo, and test selection
