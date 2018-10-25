@@ -1,14 +1,11 @@
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
+exports.default = void 0;
 
-var _slate = require('slate');
-
-var _changes = require('../changes');
-
-var _utils = require('../utils');
+var _slate = require("slate");
 
 /**
  * User pressed Enter in an editor
@@ -18,41 +15,42 @@ var _utils = require('../utils');
  * Shift+Enter in a list item should make a new line
  */
 function onEnter(event, change, next, opts) {
-    // Pressing Shift+Enter
-    // should split block normally
-    if (event.shiftKey) {
-        return next();
-    }
+  // Pressing Shift+Enter
+  // should split block normally
+  if (event.shiftKey) {
+    return next();
+  }
 
-    var value = change.value;
+  var value = change.value;
+  var currentItem = change.getCurrentItem(change.value); // Not in a list
 
-    var currentItem = (0, _utils.getCurrentItem)(opts, value);
+  if (!currentItem) {
+    return next();
+  }
 
-    // Not in a list
-    if (!currentItem) {
-        return next();
-    }
+  event.preventDefault(); // If expanded, delete first.
 
-    event.preventDefault();
+  if (value.selection.isExpanded) {
+    change.delete();
+  }
 
-    // If expanded, delete first.
-    if (value.selection.isExpanded) {
-        change.delete();
-    }
+  var isEmpty = currentItem.findDescendant(function (n) {
+    return _slate.Text.isText(n) && n.text.length > 0;
+  }) == null;
 
-    var isEmpty = currentItem.findDescendant(function (n) {
-        return _slate.Text.isText(n) && n.text.length > 0;
-    }) == null;
+  if (isEmpty) {
+    // Block is empty, we exit the list
+    if (change.getItemDepth(change.value) > 1) {
+      return change.decreaseItemDepth(change) || next();
+    } // Exit list
 
-    if (isEmpty) {
-        // Block is empty, we exit the list
-        if ((0, _utils.getItemDepth)(opts, value) > 1) {
-            return (0, _changes.decreaseItemDepth)(opts, change) || next();
-        }
-        // Exit list
-        return (0, _changes.unwrapList)(opts, change) || next();
-    }
-    // Split list item
-    return (0, _changes.splitListItem)(opts, change) || next();
+
+    return change.unwrapList(change) || next();
+  } // Split list item
+
+
+  return change.splitListItem(change) || next();
 }
-exports.default = onEnter;
+
+var _default = onEnter;
+exports.default = _default;

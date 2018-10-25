@@ -1,14 +1,9 @@
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
-
-require('slate');
-
-var _changes = require('../changes');
-
-var _utils = require('../utils');
+exports.default = void 0;
 
 /**
  * User pressed Tab in an editor.
@@ -16,24 +11,23 @@ var _utils = require('../utils');
  * Shift+Tab -> Decrease item depth if inside a list item
  */
 function onTab(event, change, next, opts) {
-    var value = change.value;
-    var selection = value.selection;
+  var value = change.value;
+  var selection = value.selection;
+
+  if (!selection.isCollapsed || !change.getCurrentItem(change.value)) {
+    return next();
+  } // Shift+tab reduce depth
 
 
-    if (!selection.isCollapsed || !(0, _utils.getCurrentItem)(opts, value)) {
-        return next();
-    }
-
-    // Shift+tab reduce depth
-    if (event.shiftKey) {
-        event.preventDefault();
-
-        return (0, _changes.decreaseItemDepth)(opts, change) || next();
-    }
-
-    // Tab increases depth
+  if (event.shiftKey) {
     event.preventDefault();
+    return change.decreaseItemDepth(change) || next();
+  } // Tab increases depth
 
-    return (0, _changes.increaseItemDepth)(opts, change) || next();
+
+  event.preventDefault();
+  return change.increaseItemDepth(change) || next();
 }
-exports.default = onTab;
+
+var _default = onTab;
+exports.default = _default;

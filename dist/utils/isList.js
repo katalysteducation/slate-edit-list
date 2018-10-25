@@ -1,10 +1,9 @@
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-
-require('slate');
+exports.default = void 0;
 
 /**
  * True if the node is a list container
@@ -12,4 +11,6 @@ require('slate');
 function isList(opts, node) {
   return opts.types.includes(node.type);
 }
-exports.default = isList;
+
+var _default = isList;
+exports.default = _default;

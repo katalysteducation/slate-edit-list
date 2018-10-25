@@ -1,24 +1,31 @@
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.onBackspace = exports.onTab = exports.onEnter = undefined;
+Object.defineProperty(exports, "onEnter", {
+  enumerable: true,
+  get: function get() {
+    return _onEnter.default;
+  }
+});
+Object.defineProperty(exports, "onTab", {
+  enumerable: true,
+  get: function get() {
+    return _onTab.default;
+  }
+});
+Object.defineProperty(exports, "onBackspace", {
+  enumerable: true,
+  get: function get() {
+    return _onBackspace.default;
+  }
+});
 
-var _onEnter = require('./onEnter');
+var _onEnter = _interopRequireDefault(require("./onEnter"));
 
-var _onEnter2 = _interopRequireDefault(_onEnter);
+var _onTab = _interopRequireDefault(require("./onTab"));
 
-var _onTab = require('./onTab');
-
-var _onTab2 = _interopRequireDefault(_onTab);
-
-var _onBackspace = require('./onBackspace');
-
-var _onBackspace2 = _interopRequireDefault(_onBackspace);
+var _onBackspace = _interopRequireDefault(require("./onBackspace"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.onEnter = _onEnter2.default;
-exports.onTab = _onTab2.default;
-exports.onBackspace = _onBackspace2.default;
