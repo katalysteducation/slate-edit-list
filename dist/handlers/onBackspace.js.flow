@@ -2,8 +2,6 @@
 import { type Change } from 'slate';
 
 import type Options from '../options';
-import { unwrapList } from '../changes';
-import { getCurrentItem } from '../utils';
 
 /**
  * User pressed Delete in an editor
@@ -28,7 +26,7 @@ function onBackspace(
         return next();
     }
     // ... in a list
-    const currentItem = getCurrentItem(opts, value);
+    const currentItem = change.getCurrentItem(change.value);
     if (!currentItem) {
         return next();
     }
@@ -43,7 +41,7 @@ function onBackspace(
     }
 
     event.preventDefault();
-    return unwrapList(opts, change) || next();
+    return change.unwrapList(change) || next();
 }
 
 export default onBackspace;

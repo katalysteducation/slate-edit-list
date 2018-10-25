@@ -2,8 +2,6 @@
 import { type Change, Text } from 'slate';
 
 import type Options from '../options';
-import { unwrapList, splitListItem, decreaseItemDepth } from '../changes';
-import { getCurrentItem, getItemDepth } from '../utils';
 
 /**
  * User pressed Enter in an editor
@@ -20,7 +18,7 @@ function onEnter(event: *, change: Change, next: *, opts: Options): void | any {
     }
 
     const { value } = change;
-    const currentItem = getCurrentItem(opts, value);
+    const currentItem = change.getCurrentItem(change.value);
 
     // Not in a list
     if (!currentItem) {
@@ -40,14 +38,14 @@ function onEnter(event: *, change: Change, next: *, opts: Options): void | any {
 
     if (isEmpty) {
         // Block is empty, we exit the list
-        if (getItemDepth(opts, value) > 1) {
-            return decreaseItemDepth(opts, change) || next();
+        if (change.getItemDepth(change.value) > 1) {
+            return change.decreaseItemDepth(change) || next();
         }
         // Exit list
-        return unwrapList(opts, change) || next();
+        return change.unwrapList(change) || next();
     }
     // Split list item
-    return splitListItem(opts, change) || next();
+    return change.splitListItem(change) || next();
 }
 
 export default onEnter;
