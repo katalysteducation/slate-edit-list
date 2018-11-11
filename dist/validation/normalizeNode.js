@@ -19,8 +19,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
  * Create a schema definition with rules to normalize lists
  */
 function normalizeNode(opts) {
-  return function (node, next) {
-    return joinAdjacentLists(opts, node, next);
+  return function (node, editor, next) {
+    return joinAdjacentLists(opts, node, editor, next);
   };
 }
 /**
@@ -28,7 +28,7 @@ function normalizeNode(opts) {
  */
 
 
-function joinAdjacentLists(opts, node, next) {
+function joinAdjacentLists(opts, node, editor, next) {
   if (node.object !== 'document' && node.object !== 'block') {
     return next();
   }
