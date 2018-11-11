@@ -34,7 +34,7 @@ describe('slate-edit-list', () => {
                 plugins: [plugin]
             });
 
-            editor.change(change => runChange(plugin, change, editor));
+            runChange(plugin, editor);
 
             if (expected) {
                 const newDocJSon = editor.value.toJSON();
