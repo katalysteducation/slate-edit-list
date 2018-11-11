@@ -6,7 +6,26 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ## [Unreleased]
 
-[Unreleased]: https://github.com/GitbookIO/slate-edit-list/compare/0.12.0...HEAD
+[Unreleased]: https://github.com/GitbookIO/slate-edit-list/compare/0.16.0...HEAD
+
+## 0.16.0 - 2018-11-11
+
+- Upgrade to be compatible with Slate 0.43.0 and 0.44.0
+
+## 0.15.0 - 2018-10-24
+
+- Use commands and queries. Instead of `listPlugin.changes.method(change, ...)`
+  now use `change.method(...)`, and instead
+  of `listPlugin.utils.method(value, ...)` now use `editor.method(value, ...)`.
+
+## 0.14.0 - 2018-10-19
+
+- Upgrade to be compatible with Slate 0.42.0
+
+## 0.13.0 - 2018-10-19
+
+- Forked from [GitbookIO/slate-edit-list](https://github.com/GitbookIO/slate-edit-list)
+- Upgrade to be compatible with Slate 0.35.x
 
 ## 0.12.1 - 2018-08-20
 
