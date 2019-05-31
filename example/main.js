@@ -12,7 +12,7 @@ import INITIAL_VALUE from './value';
 const plugin = PluginEditList();
 const plugins = [plugin];
 
-function renderNode(props: *) {
+function renderBlock(props: *) {
     const { node, attributes, children, editor } = props;
     const isCurrentItem = editor.getItemsAtRange(editor.value).contains(node);
 
@@ -110,7 +110,7 @@ class Example extends React.Component<*, *> {
                     plugins={plugins}
                     value={value}
                     onChange={this.onChange}
-                    renderNode={renderNode}
+                    renderBlock={renderBlock}
                     shouldNodeComponentUpdate={props =>
                         // To update the highlighting of nodes inside the selection
                         props.node.type === 'list_item'
