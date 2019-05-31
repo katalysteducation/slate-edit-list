@@ -1,18 +1,8 @@
 import expect from 'expect';
 
 export default function(plugin, change) {
-    const { value } = change;
-    const selectedBlock = value.document.getDescendant('_selection_key');
-
-    let initialText;
-    let initialSelection;
-
-    // eslint-disable-next-line no-shadow
-    change.withoutSaving(change => {
-        change.moveToRangeOfNode(selectedBlock);
-        initialText = change.value.startBlock.text;
-        initialSelection = change.value.selection;
-    });
+    const initialText = change.value.startBlock.text;
+    const initialSelection = change.value.selection;
 
     change.increaseItemDepth().undo();
 

@@ -4,14 +4,16 @@
     "@babel/preset-flow",
     "@babel/preset-react"
   ],
-  "env": {
-    "test": {
-      "plugins": [
-        "@babel/plugin-transform-runtime"
-      ]
-    }
-  },
   "plugins": [
     "@babel/plugin-proposal-class-properties",
+    "@babel/plugin-transform-runtime",
+    [
+      "module-resolver",
+      {
+        "alias": {
+          "h": "./tests/hyperscript"
+        }
+      }
+    ]
   ]
 }

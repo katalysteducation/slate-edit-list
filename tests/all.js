@@ -1,14 +1,11 @@
+/* eslint-disable import/no-dynamic-require */
+/* eslint-disable global-require */
 import expect from 'expect';
 import fs from 'fs';
 import path from 'path';
 import Slate from 'slate';
-import readMetadata from 'read-metadata';
 
 import EditList from '../lib';
-
-function deserializeValue(json) {
-    return Slate.Value.fromJSON(json);
-}
 
 describe('slate-edit-list', () => {
     const tests = fs.readdirSync(__dirname);
@@ -19,18 +16,16 @@ describe('slate-edit-list', () => {
             const plugin = EditList();
 
             const dir = path.resolve(__dirname, test);
-            const input = readMetadata.sync(path.resolve(dir, 'input.yaml'));
-            const expectedPath = path.resolve(dir, 'expected.yaml');
+            const input = require(path.resolve(dir, 'input.js')).default;
+            const expectedPath = path.resolve(dir, 'expected.js');
             const expected =
-                fs.existsSync(expectedPath) && readMetadata.sync(expectedPath);
+                fs.existsSync(expectedPath) && require(expectedPath).default;
 
             // eslint-disable-next-line
             const runChange = require(path.resolve(dir, 'change.js')).default;
 
-            const inputValue = deserializeValue(input);
-
             const editor = new Slate.Editor({
-                value: inputValue,
+                value: input,
                 plugins: [plugin]
             });
 
@@ -38,7 +33,7 @@ describe('slate-edit-list', () => {
 
             if (expected) {
                 const newDocJSon = editor.value.toJSON();
-                expect(newDocJSon).toEqual(deserializeValue(expected).toJSON());
+                expect(newDocJSon).toEqual(expected.toJSON());
             }
         });
     });
