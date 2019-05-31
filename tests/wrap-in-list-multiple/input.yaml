@@ -38,5 +38,5 @@ selection:
     offset: 2
   focus:
     key: 'end'
-    ofset: 4
+    offset: 4
   isFocused: true
