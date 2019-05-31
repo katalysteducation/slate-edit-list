@@ -5,7 +5,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Editor } from 'slate-react';
 
-import PluginEditList from '../lib/';
+import PluginEditList from '../lib';
 
 import INITIAL_VALUE from './value';
 
@@ -48,12 +48,13 @@ class Example extends React.Component<*, *> {
     };
 
     renderToolbar() {
-        const inList =
-            this.editor && this.editor.isSelectionInList(this.state.value);
+        const { value } = this.state;
+        const inList = this.editor && this.editor.isSelectionInList(value);
 
         return (
             <div>
                 <button
+                    type="button"
                     className={inList ? 'active' : ''}
                     onClick={() =>
                         inList
@@ -65,6 +66,7 @@ class Example extends React.Component<*, *> {
                 </button>
 
                 <button
+                    type="button"
                     className={inList ? '' : 'disabled'}
                     onClick={() => this.editor.decreaseItemDepth()}
                 >
@@ -72,6 +74,7 @@ class Example extends React.Component<*, *> {
                 </button>
 
                 <button
+                    type="button"
                     className={inList ? '' : 'disabled'}
                     onClick={() => this.editor.increaseItemDepth()}
                 >
@@ -80,10 +83,10 @@ class Example extends React.Component<*, *> {
 
                 <span className="sep">·</span>
 
-                <button onClick={() => this.editor.wrapInList()}>
+                <button type="button" onClick={() => this.editor.wrapInList()}>
                     Wrap in list
                 </button>
-                <button onClick={() => this.editor.unwrapList()}>
+                <button type="button" onClick={() => this.editor.unwrapList()}>
                     Unwrap from list
                 </button>
             </div>
@@ -97,13 +100,15 @@ class Example extends React.Component<*, *> {
     };
 
     render() {
+        const { value } = this.state;
+
         return (
             <div>
                 {this.renderToolbar()}
                 <Editor
-                    placeholder={'Enter some text...'}
+                    placeholder="Enter some text..."
                     plugins={plugins}
-                    value={this.state.value}
+                    value={value}
                     onChange={this.onChange}
                     renderNode={renderNode}
                     shouldNodeComponentUpdate={props =>
