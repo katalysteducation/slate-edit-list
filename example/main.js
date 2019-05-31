@@ -14,9 +14,7 @@ const plugins = [plugin];
 
 function renderNode(props: *) {
     const { node, attributes, children, editor } = props;
-    const isCurrentItem = plugin.utils
-        .getItemsAtRange(editor.value)
-        .contains(node);
+    const isCurrentItem = editor.getItemsAtRange(editor.value).contains(node);
 
     switch (node.type) {
         case 'ul_list':
@@ -50,53 +48,46 @@ class Example extends React.Component<*, *> {
     };
 
     renderToolbar() {
-        const {
-            wrapInList,
-            unwrapList,
-            increaseItemDepth,
-            decreaseItemDepth
-        } = plugin.changes;
-        const inList = plugin.utils.isSelectionInList(this.state.value);
+        const inList =
+            this.editor && this.editor.isSelectionInList(this.state.value);
 
         return (
             <div>
                 <button
                     className={inList ? 'active' : ''}
-                    onClick={() => this.call(inList ? unwrapList : wrapInList)}
+                    onClick={() =>
+                        inList
+                            ? this.editor.unwrapList()
+                            : this.editor.wrapInList()
+                    }
                 >
                     <i className="fa fa-list-ul fa-lg" />
                 </button>
 
                 <button
                     className={inList ? '' : 'disabled'}
-                    onClick={() => this.call(decreaseItemDepth)}
+                    onClick={() => this.editor.decreaseItemDepth()}
                 >
                     <i className="fa fa-outdent fa-lg" />
                 </button>
 
                 <button
                     className={inList ? '' : 'disabled'}
-                    onClick={() => this.call(increaseItemDepth)}
+                    onClick={() => this.editor.increaseItemDepth()}
                 >
                     <i className="fa fa-indent fa-lg" />
                 </button>
 
                 <span className="sep">·</span>
 
-                <button onClick={() => this.call(wrapInList)}>
+                <button onClick={() => this.editor.wrapInList()}>
                     Wrap in list
                 </button>
-                <button onClick={() => this.call(unwrapList)}>
+                <button onClick={() => this.editor.unwrapList()}>
                     Unwrap from list
                 </button>
             </div>
         );
-    }
-
-    call(change) {
-        this.setState({
-            value: this.state.value.change().call(change).value
-        });
     }
 
     onChange = ({ value }) => {
@@ -119,6 +110,9 @@ class Example extends React.Component<*, *> {
                         // To update the highlighting of nodes inside the selection
                         props.node.type === 'list_item'
                     }
+                    ref={editor => {
+                        this.editor = editor;
+                    }}
                 />
             </div>
         );
