@@ -4719,10 +4719,10 @@ slate-react-placeholder@^0.1.20:
     tiny-invariant "^1.0.1"
     tiny-warning "^0.0.3"
 
-"slate@>= 0.43 < 0.45.0":
-  version "0.44.13"
-  resolved "https://registry.yarnpkg.com/slate/-/slate-0.44.13.tgz#9c87d0769fd7bacc3ce649f4e3c9fd3a2e705245"
-  integrity sha512-GcDon/8iN6Mmonl7FucSDGs9KYDB7S9gs+fnnJDny5HFsHGGDTDwfBnRXMyKDC307sRZ+yhauqKSulHkoBdB9A==
+"slate@>= 0.43 < 0.46.0":
+  version "0.45.1"
+  resolved "https://registry.yarnpkg.com/slate/-/slate-0.45.1.tgz#6c6bfc9d0d54844e6d2541bcd6a840ec47bb78a1"
+  integrity sha512-kEavVrC9lhIu6SX6Xy7GUpHsjfCcr+RQXKJ2X5v1NEdHsqIf0CCHChAarkEp65QK9qx7oRDti/KWOdnYMsXc7Q==
   dependencies:
     debug "^3.1.0"
     direction "^0.1.5"
