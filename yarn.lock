@@ -4707,19 +4707,14 @@ slate-hotkeys@^0.2.9:
     is-hotkey "0.1.4"
     slate-dev-environment "^0.2.2"
 
-slate-hyperscript@^0.11.0:
-  version "0.11.30"
-  resolved "https://registry.yarnpkg.com/slate-hyperscript/-/slate-hyperscript-0.11.30.tgz#25b665fe2d1b00b16f0782b130f844552cc8d932"
-  integrity sha512-Ys9owRgk92F24q4mqWzHhNK+mwuXeb1EOh/oDl4NYiiQTX79xl8J2/YTIDlmU0svOlzOqj8lQdlD7KWvsE6kUQ==
+"slate-hyperscript@>= 0.11.0 < 0.13.0":
+  version "0.12.1"
+  resolved "https://registry.yarnpkg.com/slate-hyperscript/-/slate-hyperscript-0.12.1.tgz#0221e9d20c4bf78682373cfb74c3adafb19b768e"
+  integrity sha512-lbYtma1T57fdc8qbPVzt1Zhel94wiQxAM69cdF4f1MfZTAtlBKk0AQK+N5ShLkIVBCL8rn5f5CTlOF752PIoNQ==
   dependencies:
     is-plain-object "^2.0.4"
 
-slate-plain-serializer@^0.6.0:
-  version "0.6.39"
-  resolved "https://registry.yarnpkg.com/slate-plain-serializer/-/slate-plain-serializer-0.6.39.tgz#5fb8d4dc530a2e7e0689548d48964ce242c4516a"
-  integrity sha512-EGl+Y+9Fw9IULtPg8sttydaeiAoaibJolMXNfqI79+5GWTQwJFIbg24keKvsTw+3f2RieaPu8fcrKyujKtZ7ZQ==
-
-slate-plain-serializer@^0.7.1:
+"slate-plain-serializer@>= 0.6.0 < 0.8.0", slate-plain-serializer@^0.7.1:
   version "0.7.5"
   resolved "https://registry.yarnpkg.com/slate-plain-serializer/-/slate-plain-serializer-0.7.5.tgz#98aab6a0085ed093dad3bf1189a5c9f0c90ad9ef"
   integrity sha512-4jIPY0Mjof+ed8G1e4JtEN7q9T56LlhPz0p4yjeQtgv/Oju/yULyKJ48N2nc0Pf2ruqnRa84rPmckJTGZJ/oNA==
@@ -4756,10 +4751,10 @@ slate-react-placeholder@^0.1.20:
     tiny-invariant "^1.0.1"
     tiny-warning "^0.0.3"
 
-"slate@>= 0.43 < 0.46.0":
-  version "0.45.1"
-  resolved "https://registry.yarnpkg.com/slate/-/slate-0.45.1.tgz#6c6bfc9d0d54844e6d2541bcd6a840ec47bb78a1"
-  integrity sha512-kEavVrC9lhIu6SX6Xy7GUpHsjfCcr+RQXKJ2X5v1NEdHsqIf0CCHChAarkEp65QK9qx7oRDti/KWOdnYMsXc7Q==
+"slate@>= 0.43 < 0.47.0":
+  version "0.46.1"
+  resolved "https://registry.yarnpkg.com/slate/-/slate-0.46.1.tgz#339f33d63422672235d57419c88b2f6c7e3efa14"
+  integrity sha512-tO1HYydPbyZ/Lhqmm4T1CbcCS4VvBV2hShELpa8R03S23Uk7XIVj7tfLKrDAhwM3R5T7HM3xT4L6nk0pOyjVrw==
   dependencies:
     debug "^3.1.0"
     direction "^0.1.5"
